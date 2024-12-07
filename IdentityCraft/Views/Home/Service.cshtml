@@ -1,0 +1,45 @@
+﻿@model IEnumerable<IdentityCraft.Models.Product>
+
+@{
+    ViewData["Title"] = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- service section -->
+<section class="service_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2> Our Services </h2>
+        </div>
+        <div class="row">
+            <!-- عرض الخدمات من قاعدة البيانات -->
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 mx-auto">
+                    <div class="box">
+                        <div class="img-box">
+                            <!-- عرض الصورة من قاعدة البيانات -->
+                            <img src="~/images/@item.Image" alt="@item.Name" style="width:100px; height:100px;" />
+                        </div>
+                        <div class="detail-box">
+                            <!-- عرض اسم الخدمة -->
+                            <h5>@item.Name</h5>
+                            <!-- عرض وصف الخدمة -->
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="btn-box">
+                <a href="@Url.Action("Image", "Home")">
+                    Add Services
+                </a>
+            </div>
+        }
+        
+    </div>
+</section>
+<!-- end service section -->

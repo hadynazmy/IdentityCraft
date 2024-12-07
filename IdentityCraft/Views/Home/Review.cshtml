@@ -1,0 +1,53 @@
+﻿@using IdentityCraft.ViewModels
+@model IdentityCraft.ViewModels.ReviewViewsModel
+
+@{
+    ViewData["Title"] = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Review</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <p>@ViewBag.success</p>
+        <form asp-action="Review" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name Field -->
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Rating Field -->
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" type="number" class="form-control" min="1" max="5" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+
+            <!-- Photo Field -->
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <input asp-for="Photo" type="file" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+
+            <!-- Description Field -->
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
